@@ -17,7 +17,6 @@ from anthropic import Anthropic
 
 from core.schemas import Job
 
-
 logger = logging.getLogger(__name__)
 
 

@@ -16,8 +16,8 @@ from __future__ import annotations
 import sys
 from dataclasses import dataclass, field
 
-from core.schemas import Job, JobSource
 from candidate.kb import load_profile
+from core.schemas import Job, JobSource
 
 
 @dataclass

@@ -9,18 +9,17 @@ from __future__ import annotations
 import hashlib
 import re
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 
 from pydantic import BaseModel, Field, field_validator, model_validator
-
 
 # ---------------------------------------------------------------------------
 # Job schema
 # ---------------------------------------------------------------------------
 
 
-class JobSource(str, Enum):
+class JobSource(StrEnum):
     GREENHOUSE = "greenhouse"
     LEVER = "lever"
     ASHBY = "ashby"
@@ -28,7 +27,7 @@ class JobSource(str, Enum):
     UNKNOWN = "unknown"
 
 
-class EmploymentType(str, Enum):
+class EmploymentType(StrEnum):
     FULL_TIME = "full_time"
     PART_TIME = "part_time"
     CONTRACT = "contract"
@@ -77,7 +76,7 @@ class Job(BaseModel):
         return v.strip() if isinstance(v, str) else v
 
     @model_validator(mode="after")
-    def build_derived_fields(self) -> "Job":
+    def build_derived_fields(self) -> Job:
         self.normalized_title = re.sub(r"\s+", " ", self.title.lower().strip())
         key_parts = f"{self.company.lower()}|{self.normalized_title}|{self.location.lower()}"
         self.dedup_key = hashlib.sha256(key_parts.encode()).hexdigest()

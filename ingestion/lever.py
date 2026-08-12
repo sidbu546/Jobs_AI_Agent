@@ -8,8 +8,8 @@ from __future__ import annotations
 import asyncio
 import logging
 import re
-from datetime import datetime, timezone
-from typing import AsyncIterator
+from collections.abc import AsyncIterator
+from datetime import UTC, datetime
 
 import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
@@ -46,7 +46,7 @@ def _map_job(company: str, raw: dict) -> Job:
     team = categories.get("team", "")
 
     posted_ts = raw.get("createdAt")
-    posted_at = datetime.fromtimestamp(posted_ts / 1000, tz=timezone.utc) if posted_ts else None
+    posted_at = datetime.fromtimestamp(posted_ts / 1000, tz=UTC) if posted_ts else None
 
     # descriptionBody is either a nested dict (old format) or an HTML string (new format)
     desc_body = raw.get("descriptionBody")

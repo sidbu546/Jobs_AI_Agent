@@ -1,6 +1,5 @@
 """Unit tests for canonical schemas — no network, no LLM."""
 
-import pytest
 from core.schemas import Job, JobSource, WorkAuth
 
 

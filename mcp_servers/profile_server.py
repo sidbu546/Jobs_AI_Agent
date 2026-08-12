@@ -17,7 +17,6 @@ from mcp.server import MCPServer
 
 from candidate.kb import load_profile, profile_as_text
 
-
 server = MCPServer("jobs-ai-profile-kb")
 _profile = load_profile()
 

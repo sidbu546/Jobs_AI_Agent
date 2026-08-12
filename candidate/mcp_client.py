@@ -16,7 +16,6 @@ from typing import Any
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
-
 _REPO_ROOT = Path(__file__).parent.parent
 _SERVER_PARAMS = StdioServerParameters(
     command=sys.executable,

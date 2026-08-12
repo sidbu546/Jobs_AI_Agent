@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import asyncio
@@ -12,17 +13,17 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv()  # must run before the imports below — core/storage.py reads env vars at import time
 
-from candidate.kb import load_profile
-from core.config import settings
-from core.storage import SQLiteJobStore
-from ingestion.greenhouse import GreenhouseAdapter
-from ingestion.jobicy import JobicyAdapter
-from ingestion.lever import LeverAdapter
-from ingestion.remotive import RemotiveAdapter
-from match.agent import MatchAgent
-from tailor.keyword_tailor import build_cover_letter, keyword_tailor
+from candidate.kb import load_profile  # noqa: E402
+from core.config import settings  # noqa: E402
+from core.storage import SQLiteJobStore  # noqa: E402
+from ingestion.greenhouse import GreenhouseAdapter  # noqa: E402
+from ingestion.jobicy import JobicyAdapter  # noqa: E402
+from ingestion.lever import LeverAdapter  # noqa: E402
+from ingestion.remotive import RemotiveAdapter  # noqa: E402
+from match.agent import MatchAgent  # noqa: E402
+from tailor.keyword_tailor import build_cover_letter, keyword_tailor  # noqa: E402
 
 st.set_page_config(page_title="Jobs AI Agent", page_icon="🎯", layout="wide")
 
@@ -402,9 +403,9 @@ with tab_tailor:
                 kw_tailored = keyword_tailor(active_job, profile)
 
                 if _has_llm:
+                    from draft.agent import DraftAgent
                     from tailor.agent import TailoringAgent
                     from tailor.rewrite_agent import RewriteAgent
-                    from draft.agent import DraftAgent
 
                     # Real selection: Claude reads the full JD (incl. any company
                     # overview) and picks/orders real bullets by genuine relevance,
@@ -482,12 +483,12 @@ with tab_tailor:
                 )
 
             with sub_outreach:
-                from outreach.extract import find_emails_in_text
                 from outreach.company_lookup import (
+                    find_published_contact_email,
                     linkedin_search_url,
                     resolve_company_domain,
-                    find_published_contact_email,
                 )
+                from outreach.extract import find_emails_in_text
 
                 st.markdown("#### Contact a recruiter or hiring manager")
                 st.caption(

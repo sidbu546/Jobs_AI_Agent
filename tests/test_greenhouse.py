@@ -1,12 +1,10 @@
 """Tests for the Greenhouse adapter — mock HTTP, no real API calls."""
 
 import pytest
-import pytest_asyncio
 from pytest_httpx import HTTPXMock
 
 from core.schemas import JobSource
 from ingestion.greenhouse import GreenhouseAdapter, _map_job
-
 
 SAMPLE_RAW = {
     "id": 12345,

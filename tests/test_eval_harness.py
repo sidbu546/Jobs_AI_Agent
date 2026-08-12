@@ -1,9 +1,7 @@
 """Tests for the eval harness — this is the CI gate."""
 
-import pytest
 from core.schemas import Job, JobSource  # noqa: F401 (JobSource used in test body)
 from eval.harness import check_faithfulness, check_tailoring_relevance, check_work_auth_integrity
-
 
 REAL_BULLETS = {
     "Engineered a custom UI module for high-dimensional data visualization, increasing operational productivity by 30% for teams monitoring real-time data streams",

@@ -9,10 +9,9 @@ from datetime import datetime
 
 import chromadb
 from sqlalchemy import Boolean, Column, DateTime, Float, String, Text, create_engine
-from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 from core.schemas import Job
-
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./jobs.db")
 CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", "./.chroma")

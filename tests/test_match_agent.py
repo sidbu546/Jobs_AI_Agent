@@ -1,9 +1,10 @@
 """Tests for the match agent — local embeddings, no API calls."""
 
 import pytest
+
+from candidate.kb import load_profile
 from core.schemas import Job, JobSource
 from match.agent import MatchAgent, _passes_pre_filter
-from candidate.kb import load_profile
 
 
 def _make_job(title: str, location: str = "Remote", description: str = "") -> Job:
@@ -27,10 +28,6 @@ def test_prefilter_passes_ml_engineer():
 def test_prefilter_passes_senior_ml():
     # Senior ML/AI titles are allowed — many entry-level AI roles carry "Senior" at startups
     assert _passes_pre_filter(_make_job("Senior Machine Learning Engineer"))
-
-def test_prefilter_blocks_director():
-    assert not _passes_pre_filter(_make_job("Director of AI"))
-
 
 def test_prefilter_blocks_director():
     assert not _passes_pre_filter(_make_job("Director of AI"))

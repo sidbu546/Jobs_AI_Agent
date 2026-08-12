@@ -16,7 +16,6 @@ from functools import lru_cache
 import numpy as np
 
 from core.schemas import Job, Profile
-from candidate.kb import profile_as_text
 
 
 def _focused_profile(profile: Profile) -> str:
@@ -103,7 +102,9 @@ def _requires_too_much_experience(description: str) -> bool:
 
 @lru_cache(maxsize=1)
 def _load_model():
-    from sentence_transformers import SentenceTransformer  # lazy — avoids PyTorch load on app startup
+    from sentence_transformers import (
+        SentenceTransformer,  # lazy — avoids PyTorch load on app startup
+    )
     logger.info("Loading sentence-transformers model '%s'…", _EMBEDDING_MODEL)
     return SentenceTransformer(_EMBEDDING_MODEL)
 

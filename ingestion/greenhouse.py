@@ -13,15 +13,14 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from collections.abc import AsyncIterator
 from datetime import datetime
-from typing import AsyncIterator
 
 import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from core.schemas import EmploymentType, Job, JobSource
 from ingestion.base import IngestionAdapter
-
 
 logger = logging.getLogger(__name__)
 

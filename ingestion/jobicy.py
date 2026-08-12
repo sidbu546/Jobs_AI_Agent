@@ -7,15 +7,14 @@ from __future__ import annotations
 
 import logging
 import re
-from datetime import datetime, timezone
-from typing import AsyncIterator
+from collections.abc import AsyncIterator
+from datetime import datetime
 
 import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from core.schemas import EmploymentType, Job, JobSource
 from ingestion.base import IngestionAdapter
-
 
 logger = logging.getLogger(__name__)
 

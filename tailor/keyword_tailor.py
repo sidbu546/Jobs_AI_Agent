@@ -11,7 +11,6 @@ from collections import Counter
 
 from core.schemas import Job, Profile
 
-
 _STOPWORDS = {
     "the", "and", "for", "with", "that", "this", "will", "have", "from",
     "your", "you", "our", "are", "was", "not", "can", "but", "all", "has",

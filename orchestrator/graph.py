@@ -12,14 +12,12 @@ from typing import TypedDict
 
 from langgraph.graph import END, START, StateGraph
 
+from candidate.kb import load_profile
 from core.config import settings
 from core.schemas import Job, Profile
-from core.storage import SQLiteJobStore
 from draft.agent import DraftAgent
 from match.agent import MatchAgent
-from candidate.kb import load_profile
 from tailor.agent import TailoringAgent
-
 
 logger = logging.getLogger(__name__)
 

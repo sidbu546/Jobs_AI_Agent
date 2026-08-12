@@ -9,7 +9,6 @@ never used as a generation source.
 
 from __future__ import annotations
 
-import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -23,7 +22,6 @@ from core.schemas import (
     Project,
     WorkAuth,
 )
-
 
 _PROFILE_DATA_DIR = Path(__file__).parent.parent / "profile_data"
 
