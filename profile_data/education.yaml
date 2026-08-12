@@ -1,0 +1,22 @@
+- institution: "Boston University"
+  degree: "Master of Science"
+  field: "Artificial Intelligence"
+  gpa: "3.66/4.00"
+  location: "Boston, MA"
+  dates:
+    start: "2025-09"
+    end: "2027-01"
+  highlights:
+    - "Coursework: Neural Networks, Machine Vision, Statistical Modeling, NLP"
+
+- institution: "BITS Pilani"
+  degree: "Bachelor of Engineering"
+  field: "Chemical Engineering, Minor in Computational Intelligence"
+  gpa: "8.56/10.00"
+  location: "Hyderabad, India"
+  dates:
+    start: "2021-08"
+    end: "2025-05"
+  highlights:
+    - "Specialized in Neural Networks, Machine Vision, and Statistical Modeling"
+    - "Minor in Computational Intelligence"

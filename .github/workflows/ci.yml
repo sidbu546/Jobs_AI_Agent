@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Install dependencies
+        run: uv pip install --system -e ".[dev]"
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Type check (mypy)
+        run: mypy core/ ingestion/ profile/ match/ tailor/ draft/ eval/
+        continue-on-error: true  # advisory until types stabilize
+
+      - name: Unit tests (no LLM calls)
+        run: pytest tests/ -v --tb=short
+        env:
+          ANTHROPIC_API_KEY: "dummy-for-unit-tests"
+          DATABASE_URL: "sqlite:///./test.db"
+          CHROMA_PERSIST_DIR: "./.chroma-test"
+
+      - name: Eval harness (faithfulness gate)
+        run: python -m eval.harness
+        env:
+          ANTHROPIC_API_KEY: "dummy-for-unit-tests"
+          DATABASE_URL: "sqlite:///./test.db"

@@ -1,0 +1,22 @@
+.env
+*.db
+*.db-journal
+.chroma/
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
+node_modules/
+.DS_Store
+
+# Profile data — real files stay local only; redacted profile_data/*.example.yaml
+# versions are committed instead so the repo is self-documenting.
+profile_data/work_auth.yaml
+profile_data/meta.yaml

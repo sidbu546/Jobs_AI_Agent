@@ -1,0 +1,17 @@
+# Redacted example — profile_data/meta.yaml itself is gitignored (real phone
+# number + personal summary stay local only). Copy this to meta.yaml and fill
+# in your real values to run the app.
+
+name: Siddhanth Kalyanaraman
+email: siddhank@bu.edu
+phone: ""  # redacted for the public repo — set your real number in meta.yaml locally
+location: Boston, MA
+linkedin: https://linkedin.com/in/siddhanth-kalyanaraman
+github: https://github.com/sidbu546
+portfolio: ""
+
+summary: >
+  MS Artificial Intelligence student at Boston University (GPA 3.66) with hands-on experience
+  building production AI systems — RAG pipelines, multimodal evaluation, and applied NLP.
+  Background spans ML engineering, software quality, and full-stack tooling.
+  Proficient in Python, PyTorch, LangChain, LLM fine-tuning, and deploying end-to-end ML workflows.

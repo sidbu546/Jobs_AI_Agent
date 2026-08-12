@@ -1,0 +1,66 @@
+- name: "Research: RAG vs. Long-Context with Decision Framework"
+  description: "Comparative study (IEEE SIEDS) evaluating retrieval-augmented generation vs. long-context architectures for enterprise AI deployment"
+  bullets:
+    - "Conducted comparative research on RAG vs. long-context architectures using Llama 3 and Qwen 2.5 to optimize model reasoning"
+    - "Maximized inference throughput and KV-cache utilization to evaluate compute-cost trade-offs for enterprise-scale AI deployment"
+  technologies: ["Python", "Llama 3", "Qwen 2.5", "RAG", "LLM Evaluation"]
+  url: ""
+  dates:
+    start: "2026-01"
+    end: "2026-04"
+
+- name: "Multimodal 2-D Spatial Reasoning"
+  description: "Unified evaluation pipeline benchmarking multimodal vision-language models on 2D spatial reasoning tasks"
+  bullets:
+    - "Benchmarked 5 multimodal vision-language models across 6 spatial reasoning datasets (VSR, CV-Bench, SpatialMQA, Spatial-MM, SAT, MME-RealWorld-Lite) via a unified evaluation pipeline"
+    - "Applied Grad-CAM, attention entropy, peak saliency, and CKA to connect model performance with visual grounding and representation alignment"
+  technologies: ["Python", "Hugging Face", "PyTorch", "Grad-CAM", "CKA", "VLMs"]
+  url: ""
+  dates:
+    start: "2026-01"
+    end: "2026-04"
+
+- name: "Star: Massachusetts Housing-Law RAG Assistant"
+  description: "End-to-end two-source RAG pipeline for Massachusetts housing law Q&A with advanced retrieval and citations"
+  bullets:
+    - "Architected an end-to-end two-source RAG pipeline scraping and normalizing 40+ housing legal sections into dual ChromaDB vector stores with metadata-backed citations"
+    - "Engineered an advanced retrieval stack (MMR selection, cross-encoder reranking, score thresholding, context compression) with role-aware prompting and clickable cited sources"
+    - "Deployed on Hugging Face Spaces for public access"
+  technologies: ["Python", "LangChain", "OpenAI API", "ChromaDB", "RAG", "Cross-encoder Reranking"]
+  url: "https://huggingface.co/spaces"
+  dates:
+    start: "2026-02"
+    end: "2026-05"
+
+- name: "Structure-Aware Representation Fusion (SARF) for CLIP Transfer"
+  description: "Lightweight fusion framework combining CLIP visual embeddings with structural edge features for circuit-diagram classification"
+  bullets:
+    - "Built a lightweight fusion framework combining frozen CLIP ViT-B/32 RGB embeddings with edge-based structural features across 5 variants for circuit-diagram classification (32 classes, 1,078-image LITE benchmark)"
+    - "Designed a Grad-CAM and attention-rollout interpretability pipeline, defining Structure/Junction-Activation-Ratio metrics showing fusion redirects attention toward connectivity regions"
+  technologies: ["PyTorch", "CLIP", "Grad-CAM", "ViT", "Computer Vision", "Transfer Learning"]
+  url: ""
+  dates:
+    start: "2026-01"
+    end: "2026-04"
+
+- name: "H&E Lung Pathology AI (Hackathon Winner — Track 1)"
+  description: "AI model to analyze H&E lung pathology slides and identify histology patterns linked to vascular invasion and aggressive tumor growth"
+  bullets:
+    - "Won Track 1 by developing an AI model to analyze H&E lung pathology slides and identify histology patterns linked to vascular invasion and aggressive tumor growth"
+  technologies: ["Python", "PyTorch", "Computer Vision", "Medical Imaging", "CNN"]
+  url: ""
+  dates:
+    start: "2025-01"
+    end: "2025-01"
+
+- name: "Jobs AI Agent"
+  description: "Agentic AI system for intelligent job discovery, matching, tailoring, and application assistance using LangGraph and MCP"
+  bullets:
+    - "Designed multi-agent LangGraph pipeline for job ingestion, semantic matching, resume tailoring, and form pre-fill across Greenhouse and Lever ATSs"
+    - "Built MCP server exposing profile knowledge base as tools for agent-to-agent (A2A) consumption"
+    - "Implemented eval harness with faithfulness and tailoring-relevance metrics gated in CI to prevent hallucinated experience"
+  technologies: ["Python", "LangGraph", "Anthropic API", "Playwright", "ChromaDB", "Streamlit", "MCP", "SQLite"]
+  url: ""
+  dates:
+    start: "2025-06"
+    end: null

@@ -1,0 +1,22 @@
+# LOCKED — edit only to reflect actual visa facts, never to generate answers.
+# The system echoes these strings verbatim; it never generates work-auth answers.
+#
+# Redacted example — profile_data/work_auth.yaml itself is gitignored (real
+# immigration/visa status stays local only). Copy this to work_auth.yaml and
+# fill in your real values to run the app.
+
+authorized_to_work_us: true
+will_require_sponsorship: false
+visa_type: "example — e.g. F-1 OPT, H-1B, US Citizen, Green Card"
+
+canonical_answers:
+  "authorized to work in the united states": "Yes"
+  "require sponsorship": "No"
+  "require visa sponsorship": "No"
+  "work authorization": "example answer"
+  "visa status": "example answer"
+  "eligible to work in the us": "Yes"
+  "citizenship status": "example answer"
+  "are you a us citizen": "example answer"
+  "are you a permanent resident": "example answer"
+  "do you need work authorization": "example answer"

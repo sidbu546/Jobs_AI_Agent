@@ -1,0 +1,22 @@
+- company: "Mbb Labs Private Ltd (Maybank Group)"
+  title: "Product Engineer Intern"
+  location: "Bengaluru, India"
+  dates:
+    start: "2024-07"
+    end: "2024-12"
+  bullets:
+    - "Engineered a custom UI module for high-dimensional data visualization, increasing operational productivity by 30% for teams monitoring real-time data streams"
+    - "Developed 100+ JUnit testing programs to ensure robust logic handling in production-level software"
+  technologies: ["Java", "JUnit", "Data Visualization", "SQL"]
+
+- company: "Qualitykiosk Technologies Private Ltd"
+  title: "IT Intern"
+  location: "Navi Mumbai, India"
+  dates:
+    start: "2023-04"
+    end: "2023-06"
+  bullets:
+    - "Automated web application testing using Selenium, reducing manual testing time by 3 hours while improving reliability"
+    - "Optimized MySQL database performance through schema restructuring, indexing, and query tuning, reducing database load and improving response times by 45%"
+    - "Developed 40+ JSP and Servlet classes in Eclipse IDE and deployed them on Apache Tomcat Server, increasing test coverage accuracy for multiple web applications to 95%"
+  technologies: ["Selenium", "MySQL", "Java", "JSP", "Apache Tomcat", "Eclipse IDE"]
