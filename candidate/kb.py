@@ -9,6 +9,7 @@ never used as a generation source.
 
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -27,9 +28,35 @@ _PROFILE_DATA_DIR = Path(__file__).parent.parent / "profile_data"
 
 
 def _load_yaml(filename: str) -> dict | list:
+    """Load a profile YAML, with fallbacks for deployed environments.
+
+    Resolution order:
+      1. profile_data/<filename>            — the real file (local dev)
+      2. env var PROFILE_<STEM>_YAML         — raw YAML text injected as a secret,
+                                               for hosts where the real file is
+                                               gitignored (e.g. meta.yaml, work_auth.yaml)
+      3. profile_data/<stem>.example.yaml   — redacted placeholder, so the app
+                                               still boots with nothing configured
+    """
     path = _PROFILE_DATA_DIR / filename
-    with open(path) as f:
-        return yaml.safe_load(f)
+    if path.exists():
+        with open(path) as f:
+            return yaml.safe_load(f)
+
+    stem = Path(filename).stem
+    env_value = os.getenv(f"PROFILE_{stem.upper()}_YAML")
+    if env_value:
+        return yaml.safe_load(env_value)
+
+    example = _PROFILE_DATA_DIR / f"{stem}.example.yaml"
+    if example.exists():
+        with open(example) as f:
+            return yaml.safe_load(f)
+
+    raise FileNotFoundError(
+        f"No profile source for '{filename}': not on disk, no PROFILE_{stem.upper()}_YAML "
+        f"env var, and no {stem}.example.yaml fallback."
+    )
 
 
 def _build_experience(raw: list[dict]) -> list[Experience]:

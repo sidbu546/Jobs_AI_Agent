@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -20,6 +21,10 @@ _SERVER_PARAMS = StdioServerParameters(
     command=sys.executable,
     args=["-m", "mcp_servers.gmail_server"],
     cwd=str(_REPO_ROOT),
+    # The MCP SDK spawns servers with a stripped env (PATH/HOME/USER only).
+    # Pass everything through so GMAIL_* secrets injected as env vars on a
+    # host like Hugging Face Spaces actually reach the server.
+    env=dict(os.environ),
 )
 
 

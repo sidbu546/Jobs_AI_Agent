@@ -1,3 +1,15 @@
+---
+title: Jobs AI Agent
+emoji: 🎯
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: 1.58.0
+python_version: "3.11"
+app_file: app/main.py
+pinned: false
+---
+
 # Jobs AI Agent
 
 An agentic system for job search: it discovers listings across multiple job boards, scores
@@ -145,6 +157,27 @@ these files are the only source of truth agents are allowed to draw from.
 | `GMAIL_ADDRESS` / `GMAIL_APP_PASSWORD` | No | Enables sending recruiter outreach emails from the app. Requires a Gmail [App Password](https://myaccount.google.com/apppasswords) (needs 2-Step Verification on), not your regular password. |
 | `DATABASE_URL`, `CHROMA_PERSIST_DIR` | No | Default to local SQLite/Chroma — override for a different backend. |
 | `USAJOBS_API_KEY`, `SLACK_WEBHOOK_URL` | No | Optional integrations, unused by default. |
+| `PROFILE_META_YAML`, `PROFILE_WORK_AUTH_YAML` | Deploy only | Raw YAML text for the two gitignored profile files. On a host like Hugging Face Spaces where the real files aren't in the repo, set these as secrets and `candidate/kb.py` reads them instead. If unset, it falls back to the redacted `*.example.yaml` files so the app still boots. |
+
+## Deploying to Hugging Face Spaces
+
+The repo is already set up for a Streamlit Space — the YAML front-matter at the top of this
+README tells HF the SDK, Python version, and entry point, and `requirements.txt` holds the
+deploy-time dependency set. Create a Space (SDK: Streamlit), push this repo to it, then add
+these under **Settings → Variables and secrets**:
+
+- `ANTHROPIC_API_KEY`, `GMAIL_ADDRESS`, `GMAIL_APP_PASSWORD` — same as `.env`
+- `PROFILE_META_YAML`, `PROFILE_WORK_AUTH_YAML` — paste the full contents of your local
+  `profile_data/meta.yaml` and `work_auth.yaml` (they're gitignored, so this is how the
+  deployed app gets your real contact info and work-auth answers)
+
+The MCP servers run as subprocesses inside the Space container; `candidate/mcp_client.py` and
+`outreach/mcp_client.py` pass the full environment through to them so these secrets are visible
+there too (the MCP SDK strips the environment by default).
+
+Note `jobs.db` is gitignored and the Space's filesystem is ephemeral, so the job store starts
+empty on each restart — fine for a demo, but swap `DATABASE_URL` to a hosted Postgres if you
+need persistence.
 
 ## Running it
 
