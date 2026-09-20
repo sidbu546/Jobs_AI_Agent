@@ -1,0 +1,19 @@
+# Never bake these into the image. Secrets arrive as env vars at runtime;
+# the real profile files come in via PROFILE_*_YAML secrets.
+.env
+.venv/
+venv/
+.git/
+.github/
+jobs.db
+*.db
+*.db-journal
+.chroma/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.DS_Store
+profile_data/meta.yaml
+profile_data/work_auth.yaml

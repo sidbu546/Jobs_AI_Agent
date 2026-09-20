@@ -3,10 +3,8 @@ title: Jobs AI Agent
 emoji: 🎯
 colorFrom: blue
 colorTo: green
-sdk: streamlit
-sdk_version: 1.58.0
-python_version: "3.11"
-app_file: app/main.py
+sdk: docker
+app_port: 7860
 pinned: false
 ---
 
@@ -161,10 +159,11 @@ these files are the only source of truth agents are allowed to draw from.
 
 ## Deploying to Hugging Face Spaces
 
-The repo is already set up for a Streamlit Space — the YAML front-matter at the top of this
-README tells HF the SDK, Python version, and entry point, and `requirements.txt` holds the
-deploy-time dependency set. Create a Space (SDK: Streamlit), push this repo to it, then add
-these under **Settings → Variables and secrets**:
+The repo deploys as a **Docker Space** (HF no longer offers a native Streamlit SDK). The YAML
+front-matter at the top of this README declares `sdk: docker` and the port; `Dockerfile` pins
+Python 3.11, installs CPU-only torch plus `requirements.txt`, pre-downloads the embedding
+model, and runs Streamlit on 7860 as the non-root user HF expects. Create a Space (SDK:
+Docker), push this repo to it, then add these under **Settings → Variables and secrets**:
 
 - `ANTHROPIC_API_KEY`, `GMAIL_ADDRESS`, `GMAIL_APP_PASSWORD` — same as `.env`
 - `PROFILE_META_YAML`, `PROFILE_WORK_AUTH_YAML` — paste the full contents of your local
